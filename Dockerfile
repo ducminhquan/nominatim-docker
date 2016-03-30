@@ -51,8 +51,11 @@ RUN mkdir -p /app/nominatim
 RUN git clone --recursive https://github.com/twain47/Nominatim.git /app/nominatim
 RUN cd /app/nominatim
 WORKDIR /app/nominatim
-RUN ./autogen.sh
-RUN ./configure
+#RUN ./autogen.sh
+RUN mkdir build
+RUN cd build
+WORKDIR /app/nominatim
+RUN cmake ..
 RUN make
 
 # Configure postgresql
